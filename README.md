@@ -237,3 +237,66 @@ for (let i = 0; i < n - 1; i++) {
 }
 
 console.log(arr); // Sorted array
+
+
+
+
+------------------------------
+Merge Sort in JavaScript (Simple Code)
+
+function mergeSort(arr) {
+    // Base case: if array has 1 or 0 elements, it's already sorted
+    if (arr.length <= 1) {
+        return arr;
+    }
+
+    // Divide the array into two halves
+    let mid = Math.floor(arr.length / 2);
+    let left = arr.slice(0, mid);
+    let right = arr.slice(mid);
+
+    // Recursively sort both halves
+    let sortedLeft = mergeSort(left);
+    let sortedRight = mergeSort(right);
+
+    // Merge the two sorted halves
+    return merge(sortedLeft, sortedRight);
+}
+
+// Function to merge two sorted arrays
+function merge(left, right) {
+    let result = [];
+    let i = 0, j = 0;
+
+    // Compare elements and merge in sorted order
+    while (i < left.length && j < right.length) {
+        if (left[i] < right[j]) {
+            result.push(left[i]);
+            i++;
+        } else {
+            result.push(right[j]);
+            j++;
+        }
+    }
+
+    // Add remaining elements (if any)
+    while (i < left.length) {
+        result.push(left[i]);
+        i++;
+    }
+
+    while (j < right.length) {
+        result.push(right[j]);
+        j++;
+    }
+
+    return result;
+}
+
+// Given array
+let arr = [200, 150, 50, 100, 25, 75, 10, 5];
+
+// Sort using merge sort
+let sortedArr = mergeSort(arr);
+
+console.log(sortedArr);
