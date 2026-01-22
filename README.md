@@ -181,3 +181,59 @@ while ($row = mysqli_fetch_assoc($result)) {
 </body>
 </html>
 --------------------------------------------------------------------------------------------
+booble sort 
+let arr = [55, 25, 15, 40, 60, 35, 17, 65, 75, 10];
+
+let n = arr.length;
+
+// Outer loop
+for (let i = 0; i < n - 1; i++) {
+
+    // Inner loop
+    for (let j = 0; j < n - 1 - i; j++) {
+
+        // Compare two adjacent elements
+        if (arr[j] > arr[j + 1]) {
+            // Swap
+            let temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+        }
+    }
+}
+
+console.log(arr); // Sorted array
+
+--------------_-----------------------------
+Implement Selection sort algorithm to sort the following list of 
+numbers 10
+55, 25, 15, 40, 60, 35, 17, 65, 75, 10
+Calculate the following:
+(i) Number of exchange operations performed.
+(ii) Number of times comparison operation performed.
+(iii) Number of times the inner and the outer loops will iterate.
+let arr = [55, 25, 15, 40, 60, 35, 17, 65, 75, 10];
+let n = arr.length;
+
+// Outer loop
+for (let i = 0; i < n - 1; i++) {
+
+    // Assume current position has the minimum
+    let minIndex = i;
+
+    // Inner loop to find the smallest element
+    for (let j = i + 1; j < n; j++) {
+        if (arr[j] < arr[minIndex]) {
+            minIndex = j;  // new minimum found
+        }
+    }
+
+    // Swap the found minimum with the first element of this pass
+    if (minIndex !== i) {
+        let temp = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;
+    }
+}
+
+console.log(arr); // Sorted array
